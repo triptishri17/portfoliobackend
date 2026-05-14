@@ -8,7 +8,7 @@ const __dirname = dirname(__filename);
 // ─── Download Resume ────────────────────────────────────────────────
 export const downloadResume = (req, res, next) => {
   try {
-    const resumePath = join(__dirname, '..', 'assets', 'Tripti_Shrivastava_Resume.pdf');
+    const resumePath = join(__dirname, '..', 'public', 'resume.pdf');
 
     if (!existsSync(resumePath)) {
       return res.status(404).json({
@@ -20,11 +20,11 @@ export const downloadResume = (req, res, next) => {
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader(
       'Content-Disposition',
-      'attachment; filename="Tripti_Shrivastava_Resume.pdf"'
+      'attachment; filename="resume.pdf"'
     );
     res.setHeader('Cache-Control', 'no-store');
 
-    res.download(resumePath, 'Tripti_Shrivastava_Resume.pdf', (err) => {
+    res.download(resumePath, 'resume.pdf', (err) => {
       if (err) next(err);
     });
   } catch (error) {

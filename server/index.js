@@ -24,9 +24,10 @@ app.use(helmet({
 }));
 
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type'],
+  origin: [
+    'http://localhost:5173',
+    'https://YOUR-VERCEL-DOMAIN.vercel.app'
+  ],
   credentials: true,
 }));
 
